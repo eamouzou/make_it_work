@@ -29,6 +29,10 @@ RSpec.describe Project, type: :model do
       it "can find the theme it is connected to" do
         expect(@lampproject.theme).to eq("Apartment Furnishings")
       end
+
+      it "can create contestants" do
+        expect((@newsproject.create_contestants("bill", 5, "Hoboken", 8)).name).to eq("bill")
+      end
     end
   end
 end
