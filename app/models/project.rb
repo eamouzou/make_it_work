@@ -8,4 +8,9 @@ class Project <ApplicationRecord
   def theme
     (Challenge.find(challenge_id)).theme
   end
+
+  def create_contestants(name, age, hometown, years_of_experience)
+    self.contestants.create(name: name, age: age, hometown: hometown, years_of_experience: years_of_experience)
+  end
+
 end
