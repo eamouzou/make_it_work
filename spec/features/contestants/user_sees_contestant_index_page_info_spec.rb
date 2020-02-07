@@ -15,7 +15,7 @@ RSpec.describe "contestant information", type: :feature do
     @contestant2 =   @newsproject.contestants.create(name: "chronixx", age: 28, hometown: "Kingston", years_of_experience: 20)
 
     @contestant3 = @boardproject.contestants.create(name: "malachi", age: 18, hometown: "Montbello", years_of_experience: 2)
-    @contestant4 = @boardproject.contestants.create(name: "Javohn", age: 46, hometown: "Jackson", years_of_experience: 30)
+    @contestant4 = @boardproject.contestants.create(name: "javohn", age: 46, hometown: "Jackson", years_of_experience: 30)
 
     @contestant5 = @couchproject.contestants.create(name: "uchekwukwu", age: 23, hometown: "Lagos", years_of_experience: 10)
     @contestant6 = @couchproject.contestants.create(name: "valentina", age: 30, hometown: "Chiapas", years_of_experience: 6)
@@ -27,18 +27,26 @@ RSpec.describe "contestant information", type: :feature do
   describe "visit contestant index page, see all names and projects" do
     it "displays all contestant names" do
       visit "/contestants"
-      expect(page).to have_content(@contestant1.name)
 
-      within("#contestant-#{@constestant1.id}") do
-         expect(page).to have_link(@contestant1.projects)
+      expect(page).to have_content(@contestant1.name)
+      within("#contestant-#{@contestant1.id}") do
+         expect(page).to have_content("News Chic")
        end
 
       expect(page).to have_content(@contestant2.name)
-
-      within("#contestant-#{@constestant2.id}") do
-         expect(page).to have_link(@contestant2.projects)
+      within("#contestant-#{@contestant2.id}") do
+         expect(page).to have_content("News Chic")
        end
 
+      expect(page).to have_content(@contestant3.name)
+      within("#contestant-#{@contestant3.id}") do
+          expect(page).to have_content("Boardfit")
+        end
+
+      expect(page).to have_content(@contestant5.name)
+      within("#contestant-#{@contestant5.id}") do
+          expect(page).to have_content("Upholstery Tuxedo")
+        end
        #might need an add_contestant method for projects
     end
   end
