@@ -15,12 +15,10 @@ RSpec.describe "project information", type: :feature do
   scenario "visit project show page, see name, material and theme" do
     visit "/projects/#{@lampproject.id}"
 
-    within("#project-#{@lampproject.id}") do
-      theme = Challenge.find(@lampproject.challenge_id)
+      theme = (Challenge.find(@lampproject.challenge_id)).theme
 
       expect(page).to have_content("#{@lampproject.name}")
       expect(page).to have_content("#{@lampproject.material}")
       expect(page).to have_content(theme)
-    end
   end
 end
