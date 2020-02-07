@@ -13,7 +13,7 @@ RSpec.describe "project information", type: :feature do
   end
 
   scenario "visit project show page, see name, material and theme" do
-    visit "/projects/:id"
+    visit "/projects/#{@lampproject.id}"
 
     within("#project-#{@lampproject.id}") do
       theme = Challenge.find(@lampproject.challenge_id)
