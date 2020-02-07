@@ -6,4 +6,12 @@ class Contestant <ApplicationRecord
 
   has_many :contestant_projects
   has_many :projects, through: :contestant_projects
+
+  def project_names
+    projects = self.projects.map {|project| project.name}
+    projects.reduce("") do |acc, project|
+      acc += project
+      acc
+    end
+  end
 end
