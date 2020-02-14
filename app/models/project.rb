@@ -5,7 +5,7 @@ class Project <ApplicationRecord
   has_many :contestants, through: :contestant_projects
 
   def contestant_count
-    contestants.length #can you use self for an instance method?
+    contestants.length
   end
 
   def average_cont_exp
