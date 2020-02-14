@@ -1,0 +1,13 @@
+<h4>Name: <%= @project.name %></h4>
+<h4>Material: <%= @project.material %></h4>
+<h4>Challenge Theme: <%= @project.challenge.theme %></h4>
+<h4>Number of Contestants: <%= @project.contestant_count %></h4>
+<h4>Average Contestant Experience: <%= @project.average_cont_exp %></h4>
+<br>
+<h4>Fill out this form to add a contestant!</h4>
+<%= form_tag "/contestant_projects/#{@project.id}" do%>
+  <%= label_tag :id %>
+  <%= text_field_tag :id %>
+  <br>
+  <%= submit_tag 'Add a Contestant' %>
+<% end %>
